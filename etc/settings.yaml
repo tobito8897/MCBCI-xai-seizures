@@ -1,0 +1,48 @@
+chb-mit:
+  database: ../../data/chbmit/
+  metadata: ../metadata/chb-mit
+  windows: ../../processeddata/data_chb
+  channels: ../etc/channels_chb-mit.txt
+  seizure_records: ../etc/RECORDS-WITH-SEIZURES_chb-mit
+  fs: 256
+  num_channels: 21
+  length: 500
+  noictal_sample_step: 500
+  ictal_sample_step: 1
+  gain: 2.559375
+  units: 0.000001  # Microvots
+
+siena:
+  database: ../../data/siena/
+  metadata: ../metadata/siena/
+  windows: ../../processeddata/data_siena
+  channels: ../etc/channels_siena.txt
+  fs: 512
+  num_channels: 18
+  length: 1000
+  noictal_sample_step: 1000
+  ictal_sample_step: 2
+  gain: 1
+  units: 0.000001  # Microvots
+
+hossain:
+  stats: ../../mldata/hossain
+  images: ../../images/hossain
+  models: ../../models/hossain
+  epochs: 2
+
+wang_1d:
+  stats: ../../mldata/wang_1d
+  images: ../../images/wang_1d
+  models: ../../models/wang_1d
+  epochs: 50
+
+wang_2d:
+  stats: ../../mldata/wang_2d
+  images: ../../images/wang_2d
+  models: ../../models/wang_2d
+  epochs: 50
+
+classes:
+  0: Normal
+  1: Ictal

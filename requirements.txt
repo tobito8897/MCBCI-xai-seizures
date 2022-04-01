@@ -1,0 +1,7 @@
+pandas
+keras
+scikit-learn
+tensorflow
+docopt
+mne
+yaml
