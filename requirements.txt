@@ -4,4 +4,4 @@ scikit-learn
 tensorflow
 docopt
 mne
-yaml
+pyyaml

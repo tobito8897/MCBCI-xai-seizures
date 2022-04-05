@@ -9,24 +9,4 @@
 9- source venv/bin/activate
 10- /lustre/home/ssanchez/python-core_375/bin/python3 -m pip install --target=/lustre/home/ssanchez/python-packages/ -r requirements.txt
 11- deactivate
-12- srun --partition=gpus -l train_net.sh
-
-###############################################################
-
-cat train_net.sh
-
-#!/bin/bash
-
-source venv/bin/activate
-/lustre/home/ssanchez/python-core_375/bin/python3 ./bin/train_ml_model_crosspatient.py
-deactivate
-
-###############################################################
-
-cat requirements.txt
-
-pandas
-keras
-scikit-learn
-tensorflow
-mne
+12- srun --partition=gpus -l run_leoatrox_jobs.sh
