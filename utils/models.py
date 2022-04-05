@@ -70,8 +70,8 @@ def Net_Wang_1d(input_dim: int):
                   metrics=["accuracy"])
     model.summary()
 
-    plot_model(model, to_file="../images/wang_1d/ANNModel.png",
-               show_shapes=True, show_layer_names=True, dpi=300)
+    #plot_model(model, to_file="../../images/wang_1d/ANNModel.png",
+    #           show_shapes=True, show_layer_names=True, dpi=300)
     return model
 
 
@@ -124,8 +124,8 @@ def Net_Wang_2d(input_dim: int):
                   metrics=["accuracy"])
     model.summary()
 
-    plot_model(model, to_file="../images/wang_2d/ANNModel.png",
-               show_shapes=True, show_layer_names=True, dpi=300)
+    #plot_model(model, to_file="../../images/wang_2d/ANNModel.png",
+    #           show_shapes=True, show_layer_names=True, dpi=300)
     return model
 
 
@@ -153,6 +153,6 @@ def Net_Hossain(input_dim: int, num_channels: int):
                   metrics=["accuracy"])
     model.summary()
 
-    plot_model(model, to_file="../images/hossain/ANNModel.png", show_shapes=True,
-               show_layer_names=True, dpi=300)
+    #plot_model(model, to_file="../../images/hossain/ANNModel.png", show_shapes=True,
+    #           show_layer_names=True, dpi=300)
     return model
