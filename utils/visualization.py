@@ -24,6 +24,7 @@ def plot_validation_curve(training_acc: list, validation_acc: list,
     plt.ylabel(title)
     plt.xlabel("Epochs")
     plt.legend(loc="best")
+    plt.ylim([0, 1])
     plt.show()
 
     plt.savefig(filename + ".png", dpi=300, transparent=False, facecolor="w")
