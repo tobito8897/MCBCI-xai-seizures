@@ -17,7 +17,7 @@ os.environ["MKL_THREADING_LAYER"] = "GNU"
 
 def early_stop_wang():
     return EarlyStopping(monitor="val_loss",
-                         patience=5,
+                         patience=15,
                          verbose=2)
 
 

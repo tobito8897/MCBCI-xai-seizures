@@ -1,10 +1,11 @@
 #!/usr/bin/python3.7
 """
 Usage:
-    generate_train_windows_chb.py --patient=<p>
+    generate_train_windows_chb.py --patient=<p> --db=<d>
 
 Options:
     --patient=<p>     Patient used for evaluation
+    --db=<p>          Database
 """
 import os
 import sys
@@ -19,7 +20,7 @@ from utils.parsers import *
 from utils.windowing import *
 
 OPTS = docopt(__doc__)
-settings = settings["chb-mit"]
+settings = settings[OPTS["--db"]]
 os.environ["FSAMPLING"] = str(settings["fs"])
 os.environ["NCHANNELS"] = str(settings["num_channels"])
 os.environ["LWINDOW"] = str(settings["length"])
@@ -60,9 +61,9 @@ def main():
             logging.error(exc)
             continue
 
-        if noictal_windows.shape[0] > ictal_windows.shape[0]*2:
+        if noictal_windows.shape[0] > ictal_windows.shape[0]:
             noictal_windows = random_selection(noictal_windows,
-                                               ictal_windows.shape[0]*2)
+                                               ictal_windows.shape[0])
         else:
             ictal_windows = random_selection(ictal_windows,
                                              noictal_windows.shape[0])

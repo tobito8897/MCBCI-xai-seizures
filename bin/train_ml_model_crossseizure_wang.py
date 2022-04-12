@@ -33,6 +33,7 @@ def main():
     logging.info("Patient selected for evaluation: %s", patient)
     data_files = [x for x in list_files(database["windows"] + "/train", "*.csv")
                   if patient in x]
+
     sessions = {x.split("_")[2] for x in data_files}
     labels = [(0, 1) if "_ictal" in x else (1, 0) for x in data_files]
     training_files = dict(zip(data_files, labels))
