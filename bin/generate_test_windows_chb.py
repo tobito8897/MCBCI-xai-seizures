@@ -1,10 +1,11 @@
 #!/usr/bin/python3.7
 """
 Usage:
-    generate_test_windows_chb.py --patient=<p>
+    generate_test_windows_chb.py --patient=<p> --db=<d>
 
 Options:
     --patient=<p>     Patient used for evaluation
+    --db=<p>          Database
 """
 import os
 import sys
@@ -20,7 +21,7 @@ from utils.windowing import *
 
 
 OPTS = docopt(__doc__)
-settings = settings["chb-mit"]
+settings = settings[OPTS["--db"]]
 os.environ["FSAMPLING"] = str(settings["fs"])
 os.environ["NCHANNELS"] = str(settings["num_channels"])
 os.environ["LWINDOW"] = str(settings["length"])
