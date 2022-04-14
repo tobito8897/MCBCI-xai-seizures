@@ -1,7 +1,7 @@
 #!/usr/bin/python3.7
 """
 Usage:
-    visualization_tools_wang.py.py --patient=<p>  --db=<d> --model=<m>
+    visualization_tools_wang.py --patient=<p>  --db=<d> --model=<m>
 
 Options:
     --patient=<p>     Patient used for evaluation
@@ -9,6 +9,7 @@ Options:
     --model=<m>       Wang 1d or 2d
 """
 import sys
+import numpy as np
 from docopt import docopt
 sys.path.append("../")
 

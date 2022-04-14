@@ -43,12 +43,12 @@ def Net_Wang_1d(input_dim: int):
     tower_1 = MaxPooling1D(pool_size=3, strides=1,
                            padding='same')(tower_1)
 
-    tower_2 = Conv1D(32, 4, strides=2,
+    tower_2 = Conv1D(32, 5, strides=2,
                      activation='relu')(input_shape)
     tower_2 = BatchNormalization(axis=-1)(tower_2)
     tower_2 = MaxPooling1D(pool_size=3, strides=1,
                            padding='same')(tower_2)
-    tower_2 = Conv1D(64, 4, padding='same', strides=2,
+    tower_2 = Conv1D(64, 5, padding='same', strides=2,
                      activation='relu')(tower_2)
     tower_2 = BatchNormalization(axis=-1)(tower_2)
     tower_2 = MaxPooling1D(pool_size=3, strides=1,
@@ -59,7 +59,7 @@ def Net_Wang_1d(input_dim: int):
     tower_2 = MaxPooling1D(pool_size=3, strides=1,
                            padding='same')(tower_2)
 
-    merged = Concatenate(axis=1)([tower_1, tower_2])
+    merged = Concatenate(axis=-1)([tower_1, tower_2])
     merged = GlobalAveragePooling1D()(merged)
     merged = Dense(128, activation='relu')(merged)
     merged = Dropout(0.25)(merged)
@@ -97,12 +97,12 @@ def Net_Wang_2d(input_dim: int):
     tower_1 = MaxPooling2D(pool_size=3, strides=1,
                            padding='same')(tower_1)
 
-    tower_2 = Conv2D(32, 4, strides=2,
+    tower_2 = Conv2D(32, 5, strides=2,
                      activation='relu')(input_shape)
     tower_2 = BatchNormalization(axis=-1)(tower_2)
     tower_2 = MaxPooling2D(pool_size=3, strides=1,
                            padding='same')(tower_2)
-    tower_2 = Conv2D(64, 4, padding='same', strides=2,
+    tower_2 = Conv2D(64, 5, padding='same', strides=2,
                      activation='relu')(tower_2)
     tower_2 = BatchNormalization(axis=-1)(tower_2)
     tower_2 = MaxPooling2D(pool_size=3, strides=1,
@@ -113,7 +113,7 @@ def Net_Wang_2d(input_dim: int):
     tower_2 = MaxPooling2D(pool_size=3, strides=1,
                            padding='same')(tower_2)
 
-    merged = Concatenate(axis=1)([tower_1, tower_2])
+    merged = Concatenate(axis=-2)([tower_1, tower_2])
     merged = GlobalAveragePooling2D()(merged)
     merged = Dense(128, activation='relu')(merged)
     merged = Dropout(0.25)(merged)
@@ -134,16 +134,16 @@ def Net_Hossain(input_dim: int, num_channels: int):
     Creation of model object, size (width, length)
     """
     model = Sequential()
-    model.add(Conv2D(1, (1, 10), activation="elu", input_shape=input_dim))
-    model.add(Conv2D(1, (num_channels, 20), activation="elu", padding="same"))
+    model.add(Conv2D(20, (1, 10), activation="elu", input_shape=input_dim))
+    model.add(Conv2D(20, (num_channels, 20), activation="elu", padding="same"))
     model.add(BatchNormalization(-1))
     model.add(MaxPooling2D(pool_size=(1, 2), strides=2))
 
-    model.add(Conv2D(1, (20, 10), activation="elu", padding="same"))
+    model.add(Conv2D(40, (20, 10), activation="elu", padding="same"))
     model.add(BatchNormalization(-1))
     model.add(MaxPooling2D(pool_size=(1, 2), strides=2))
 
-    model.add(Conv2D(1, (40, 10), activation="elu", padding="same"))
+    model.add(Conv2D(80, (40, 10), activation="elu", padding="same"))
     model.add(Flatten())
     model.add(Dropout(0.2))
     model.add(Dense(2, activation="elu"))

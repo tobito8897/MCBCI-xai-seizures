@@ -7,7 +7,8 @@ from sklearn.metrics import confusion_matrix, f1_score
 from . import settings
 
 
-__all__ = ["plot_validation_curve", "plot_confusion_matrix"]
+__all__ = ["plot_validation_curve", "plot_confusion_matrix",
+           "plot_epochs_vs_performance"]
 
 
 def plot_validation_curve(training_acc: list, validation_acc: list,
@@ -54,5 +55,22 @@ def plot_confusion_matrix(true_label: list, predicted_label: list,
     ax.set_title("F1={}, Sen={}, Spec={}".format(f1s, sen, spec))
     ax.set_ylabel("True label")
     ax.set_xlabel("Predicted label")
+    plt.show()
+    plt.savefig(filename + ".png", dpi=300, transparent=False, facecolor="w")
+
+
+def plot_epochs_vs_performance(epochs: list, f1_scores: list,
+                               sensitivities: list, specificities: list,
+                               filename: str):
+    dataset = [[x, y, "F1-Score"] for x, y in zip(epochs, f1_scores)]
+    dataset_1 = [[x, y, "Sensitivity"] for x, y in zip(epochs, sensitivities)]
+    dataset_2 = [[x, y, "Specificities"] for x, y in zip(epochs,
+                                                         specificities)]
+    dataset.extend(dataset_1)
+    dataset.extend(dataset_2)
+    df_cm = pd.DataFrame(dataset, columns=["Ictal epochs", "Performance", "Metric"])
+    print(df_cm)
+    ax = sn.lmplot(x="Ictal epochs", y="Performance", data=df_cm,
+                   legend="full", hue="Metric")
     plt.show()
     plt.savefig(filename + ".png", dpi=300, transparent=False, facecolor="w")
