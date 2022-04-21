@@ -7,6 +7,7 @@ chb-mit_wang:
   fs: 256
   num_channels: 21
   length: 512
+  downsampled_length: 512
   noictal_sample_step: 512
   ictal_sample_step: 51       #Overlap 90% - 51, 80% - 102, 70% - 153
   gain: 2.559375
@@ -36,6 +37,7 @@ chb-mit_wang:
     - chb22
     - chb23
     - chb24
+  patience: 15
 
 siena_wang:
   database: ../../data/siena/
@@ -44,17 +46,34 @@ siena_wang:
   channels: ../etc/channels_siena.txt
   fs: 512
   num_channels: 18
-  length: 1000
-  noictal_sample_step: 1000
-  ictal_sample_step: 2
+  length: 1024
+  downsampled_length: 512
+  noictal_sample_step: 1024
+  ictal_sample_step: 102     #Overlap 90% - 102, 80% - 204, 70% - 306
   gain: 1
   units: 0.000001  # Microvots
+  patients:
+    - PN00
+    - PN01
+    - PN03
+    - PN05
+    - PN06
+    - PN07
+    - PN09
+    - PN10
+    - PN11
+    - PN12
+    - PN13
+    - PN14
+    - PN16
+    - PN17
+  patience: 10
 
 hossain:
   stats: ../../mldata/hossain
   images: ../../images/hossain
   models: ../../models/hossain
-  epochs: 2
+  epochs: 90
 
 wang_1d:
   stats: ../../mldata/wang_1d

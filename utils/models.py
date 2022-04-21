@@ -15,9 +15,9 @@ __all__ = ["early_stop_wang", "Net_Hossain", "Net_Wang_1d", "Net_Wang_2d"]
 os.environ["MKL_THREADING_LAYER"] = "GNU"
 
 
-def early_stop_wang():
+def early_stop_wang(patience):
     return EarlyStopping(monitor="val_loss",
-                         patience=15,
+                         patience=patience,
                          verbose=2)
 
 

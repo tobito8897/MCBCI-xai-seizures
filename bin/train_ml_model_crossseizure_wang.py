@@ -35,6 +35,10 @@ def main():
                   if patient in x]
 
     sessions = {x.split("_")[2] for x in data_files}
+    if len(sessions) < 2:
+        logging.warning("Not enough sessions")
+        return
+
     labels = [(0, 1) if "_ictal" in x else (1, 0) for x in data_files]
     training_files = dict(zip(data_files, labels))
 
@@ -67,14 +71,16 @@ def main():
                                            database["num_channels"])
 
         if OPTS["--model"] == "wang_1d":
-            model = Net_Wang_1d((database["num_channels"], database["length"]))
+            model = Net_Wang_1d((database["num_channels"],
+                                 database["downsampled_length"]))
         elif OPTS["--model"] == "wang_2d":
-            model = Net_Wang_2d((database["num_channels"], database["length"], 1))
+            model = Net_Wang_2d((database["num_channels"],
+                                 database["downsampled_length"], 1))
             x_train = x_train[..., np.newaxis]
 
         history = model.fit(x_train, y_train, epochs=settings["epochs"],
                             verbose=1, validation_split=0.2,
-                            batch_size=100, callbacks=[early_stop_wang()])
+                            batch_size=100, callbacks=[early_stop_wang(database["patience"])])
         model.save(model_file)
 
         logging.info("Starting predictions")

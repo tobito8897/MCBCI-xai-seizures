@@ -4,52 +4,40 @@ SCRIPTPATH=$( cd -- "$( dirname -- "${BASH_SOURCE[0]}" )" &> /dev/null && pwd )
 DATAPATH=`echo /../bin`
 cd $SCRIPTPATH$DATAPATH
 
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb01 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb02 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb03 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb04 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb05 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb06 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb07 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb08 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb09 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb10 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb11 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb12 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb13 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb14 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb15 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb16 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb17 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb18 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb19 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb20 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb21 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb22 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb23 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb24 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb01 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb02 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb03 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb04 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb05 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb06 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb07 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb08 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb09 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb10 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb11 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb12 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb13 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb14 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb15 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb16 --db=chb-mit_wang --model=wang_1d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb17 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb18 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb19 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb20 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb21 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb22 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb23 --db=chb-mit_wang --model=wang_2d
-/lustre/home/ssanchez/python-core_375/bin/python3 train_ml_model_crossseizure_wang.py --patient=chb24 --db=chb-mit_wang --model=wang_2d
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN00 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN01 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN02 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN03 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN04 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN05 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN06 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN07 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN08 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN09 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN10 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN11 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN12 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN13 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN14 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN15 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN16 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_train_windows_siena.py --patient=PN17 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN00 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN01 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN02 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN03 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN04 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN05 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN06 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN07 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN08 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN09 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN10 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN11 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN12 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN13 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN14 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN15 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN16 --db=siena_wang
+/lustre/home/ssanchez/python-core_375/bin/python3 generate_test_windows_siena.py --patient=PN17 --db=siena_wang
 deactivate

@@ -39,7 +39,7 @@ def convert_to_bipolar(bipolar_montage: list, current_channels: dict,
 
 
 def get_windows(length: int, step: int, seizure_intervals: tuple,
-                data: np.array, ictal: bool = True) -> list:
+                data: np.array, init_time: int, ictal: bool = True) -> list:
     fs = int(os.environ.get("FSAMPLING"))
     start = 0
     end = data.shape[1]
@@ -48,12 +48,17 @@ def get_windows(length: int, step: int, seizure_intervals: tuple,
     while True:
         ictal_flag = 0
         for interval in seizure_intervals:
-            if start/fs >= interval[0] and (start + step)/fs <= interval[1]:
+            if start/fs >= (interval[0]-init_time) and (start + step)/fs <= (interval[1]-init_time):
                 ictal_flag = 1
                 break
-            elif start/fs <= interval[1] or (start + step)/fs >= interval[0]:
+        if ictal_flag == 0:
+            for interval in seizure_intervals:
+                if start/fs <= (interval[1]-init_time) or (start + step)/fs >= (interval[0]-init_time):
+                    ictal_flag -= 1
+            if -ictal_flag == len(seizure_intervals):
                 ictal_flag = -1
-                break
+            else:
+                ictal_flag = 0
 
         if ictal and ictal_flag == 1:
             window = data[:, start: start+length]
@@ -70,12 +75,12 @@ def get_windows(length: int, step: int, seizure_intervals: tuple,
     return np.stack(windows, axis=0)
 
 
-def get_seizure_windows(*args):
-    return get_windows(*args, ictal=True)
+def get_seizure_windows(*args, init_time=0):
+    return get_windows(*args, init_time=init_time, ictal=True)
 
 
-def get_noseizure_windows(*args):
-    return get_windows(*args, ictal=False)
+def get_noseizure_windows(*args, init_time=0):
+    return get_windows(*args, init_time=init_time, ictal=False)
 
 
 def random_selection(windows: np.array, selected: int) -> np.array:
