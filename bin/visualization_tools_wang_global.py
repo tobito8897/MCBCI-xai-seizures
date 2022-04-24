@@ -42,7 +42,8 @@ def main():
             f1s = f1_score(predictions["real"], predictions["predicted"])
             sen = float(cmatrix[1][1]/np.sum(cmatrix[1]))
             spec = float(cmatrix[0][0]/np.sum(cmatrix[0]))
-
+        if ictal_epochs == 0:
+            continue
         epochs.append(ictal_epochs)
         f1_scores.append(f1s)
         sensitivities.append(sen)
