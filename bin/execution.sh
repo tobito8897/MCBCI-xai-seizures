@@ -1,6 +1,4 @@
 #!/bin/bash
-../ksh/create_tree_dir.sh
-python3.7 download_edf_chb-mit.py
 python3.7 generate_train_windows_chb.py --patient=chb01 --db=chb-mit_wang
 python3.7 generate_train_windows_chb.py --patient=chb02 --db=chb-mit_wang
 python3.7 generate_train_windows_chb.py --patient=chb03 --db=chb-mit_wang

@@ -9,7 +9,7 @@ chb-mit_wang:
   length: 512
   downsampled_length: 512
   noictal_sample_step: 512
-  ictal_sample_step: 102       #Overlap 90% - 51, 80% - 102, 70% - 153
+  ictal_sample_step: 6       #Overlap 90% - 51, 80% - 102, 70% - 153
   gain: 2.559375
   units: 0.000001  # Microvots
   patients:
