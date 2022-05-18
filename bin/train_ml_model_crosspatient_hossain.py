@@ -86,10 +86,12 @@ def main():
         training_files = dict(zip(dataset, labels))
 
         x_train, y_train = prepare_dataset(training_files,
-                                           database["num_channels"])
+                                           database["num_channels"], shuffle=True)
 
         history = model.fit(x_train, y_train, epochs=1, verbose=1,
-                            validation_split=0.2, batch_size=100)
+                            validation_split=0.2, batch_size=100,
+                            shuffle=True)
+        raise Exception
         history_data["acc"].extend(history.history["accuracy"])
         history_data["val_acc"].extend(history.history["val_accuracy"])
         history_data["loss"].extend(history.history["loss"])
@@ -98,7 +100,7 @@ def main():
 
     logging.info("Starting predictions")
     x_test, y_test = prepare_dataset(testing_files,
-                                     database["num_channels"])
+                                     database["num_channels"], shuffle=False)
     results = model.predict(x_test)
     y_real = y_test.argmax(axis=1).tolist()
     y_predicted = results.argmax(axis=1).tolist()

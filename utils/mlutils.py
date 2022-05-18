@@ -7,7 +7,7 @@ __all__ = ["prepare_dataset"]
 
 
 def create_labels(label: int, length: int) -> np.array:
-    return np.array([label]*length)
+    return np.array([label]*length, dtype=np.int32)
 
 
 def shuffle_dataset(instances: int, labels: int) -> tuple:
@@ -17,7 +17,8 @@ def shuffle_dataset(instances: int, labels: int) -> tuple:
     return instances, labels
 
 
-def prepare_dataset(files_map: dict, num_channels: int) -> tuple:
+def prepare_dataset(files_map: dict, num_channels: int,
+                    shuffle: bool = True) -> tuple:
     x_train = []
     y_train = []
     for file, label in files_map.items():
@@ -28,5 +29,6 @@ def prepare_dataset(files_map: dict, num_channels: int) -> tuple:
     x_train = np.concatenate(x_train, axis=0)
     x_train = np.expand_dims(x_train, axis=3)
     y_train = np.concatenate(y_train, axis=0)
-    x_train, y_train = shuffle_dataset(x_train, y_train)
+    if shuffle:
+        x_train, y_train = shuffle_dataset(x_train, y_train)
     return x_train, y_train
