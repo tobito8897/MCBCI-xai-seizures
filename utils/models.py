@@ -144,7 +144,6 @@ def Net_Hossain(input_dim: int, num_channels: int):
     model.add(MaxPooling2D(pool_size=(1, 2), strides=2))
 
     model.add(Conv2D(80, (40, 10), activation="elu", padding="same"))
-    model.add(BatchNormalization(-1))
     model.add(Flatten())
     model.add(Dropout(0.2))
     model.add(Dense(2, activation="softmax"))

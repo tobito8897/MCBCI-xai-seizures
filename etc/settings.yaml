@@ -73,7 +73,7 @@ hossain:
   stats: ../../mldata/hossain
   images: ../../images/hossain
   models: ../../models/hossain
-  epochs: 1
+  epochs: 25
 
 wang_1d:
   stats: ../../mldata/wang_1d

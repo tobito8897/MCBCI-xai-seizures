@@ -98,7 +98,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
         return x, y
 
     def __getitem__(self, index):
-        print(time.time())
+        #print(time.time())
         dataset = []
         for x in self.patients:
             if x == self.current_patient:
@@ -108,7 +108,7 @@ class CustomDataGen(tf.keras.utils.Sequence):
             y = random.choice(self.ictal_files_map[x])
             dataset.append([y[1], y[0]])
         X, y = self.__get_data(dataset)
-        print(time.time())
+        #print(time.time())
         return X, y
 
     def __len__(self):
