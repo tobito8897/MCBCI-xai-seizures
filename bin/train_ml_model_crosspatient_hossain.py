@@ -8,7 +8,6 @@ Options:
     --db=<p>          Database to use for training
 """
 import sys
-import random
 import logging
 import numpy as np
 import tensorflow as tf
@@ -84,7 +83,8 @@ def main():
 
     history = model.fit(train_gen, validation_data=val_gen,
                         epochs=settings["epochs"], verbose=1,
-                        shuffle=True)
+                        shuffle=True, use_multiprocessing=True,
+                        workers=3)
     history_data["acc"] = history.history["accuracy"]
     history_data["val_acc"] = history.history["val_accuracy"]
     history_data["loss"] = history.history["loss"]
