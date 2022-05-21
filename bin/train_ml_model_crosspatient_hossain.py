@@ -8,6 +8,7 @@ Options:
     --db=<p>          Database to use for training
 """
 import sys
+import random
 import logging
 import numpy as np
 import tensorflow as tf
@@ -71,24 +72,31 @@ def main():
                     "val_acc": [],
                     "loss": [],
                     "val_loss": []}
+    for _ in range(settings["epochs"]):
+        labels, dataset = [], []
+        for x in database["patients"]:
+            if x == patient:
+                continue
+            y = random.choice(ictal_data[x])
+            labels.append(y[0])
+            dataset.append(y[1])
+            y = random.choice(noictal_data[x])
+            labels.append(y[0])
+            dataset.append(y[1])
+        training_files = dict(zip(dataset, labels))
 
-    train_gen = CustomDataGen(ictal_data, noictal_data,
-                              database["num_channels"],
-                              database["patients"], patient,
-                              100)
-    val_gen = CustomDataGen(ictal_data, noictal_data,
-                            database["num_channels"],
-                            database["patients"], patient,
-                            20)
+        x_train, y_train = prepare_dataset(training_files,
+                                           database["num_channels"],
+                                           shuffle=False)
 
-    history = model.fit(train_gen, validation_data=val_gen,
-                        epochs=settings["epochs"], verbose=1,
-                        shuffle=True, use_multiprocessing=True,
-                        workers=3)
-    history_data["acc"] = history.history["accuracy"]
-    history_data["val_acc"] = history.history["val_accuracy"]
-    history_data["loss"] = history.history["loss"]
-    history_data["val_loss"] = history.history["val_loss"]
+        history = model.fit(x_train, y_train, epochs=1, verbose=1,
+                            validation_split=0.2, batch_size=100,
+                            shuffle=True,
+                            callbacks=[early_stop_wang(database["patience"])])
+        history_data["acc"].extend(history.history["accuracy"])
+        history_data["val_acc"].extend(history.history["val_accuracy"])
+        history_data["loss"].extend(history.history["loss"])
+        history_data["val_loss"].extend(history.history["val_loss"])
     model.save(model_file)
 
     logging.info("Starting predictions")

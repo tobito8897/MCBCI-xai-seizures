@@ -38,7 +38,7 @@ def load_csv_numpy(filename: str, num_channels: int):
             length = int(len(row)/num_channels)
             array.append(np.array(row).reshape(num_channels, length))
     array = np.stack(array, axis=0)
-    return array.astype(np.float32)
+    return array.astype(np.float32, copy=False)
 
 
 def write_pickle(filename: str, data: dict):
