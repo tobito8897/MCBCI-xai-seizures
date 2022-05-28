@@ -13,8 +13,8 @@ from utils import settings
 from utils.http import download_file
 
 
-record_seizure_file = os.path.join(current_dir, settings["chb-mit"]["seizure_records"])
-dst_directory = os.path.join(current_dir, settings["chb-mit"]["database"])
+record_seizure_file = os.path.join(current_dir, settings["chb-mit_wang"]["seizure_records"])
+dst_directory = os.path.join(current_dir, settings["chb-mit_wang"]["database"])
 chb_url = "https://physionet.org/files/chbmit/1.0.0/"
 
 

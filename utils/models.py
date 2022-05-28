@@ -145,7 +145,7 @@ def Net_Hossain(input_dim: int, num_channels: int):
 
     model.add(Conv2D(80, (40, 10), activation="elu", padding="same"))
     model.add(Flatten())
-    model.add(Dropout(0.2))
+    model.add(Dropout(0.25))
     model.add(Dense(2, activation="softmax"))
 
     model.compile(optimizer=SGD(), loss="binary_crossentropy",
