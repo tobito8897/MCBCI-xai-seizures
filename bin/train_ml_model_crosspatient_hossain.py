@@ -33,27 +33,18 @@ settings = settings["hossain"]
 def main():
     logging.info("Patient selected for evaluation: %s", patient)
 
-    ictal_data, noictal_data = defaultdict(list), defaultdict(list)
-    data_files = [x for x in list_files(database["windows"] + "/train", "*.csv")
-                  if patient not in x and "_ictal" in x]
-    labels = [(0, 1) for _ in data_files]
-    for x, y in zip(labels, data_files):
-        for z in database["patients"]:
-            if z in y:
-                ictal_data[z].append((x, y))
-                break
+    ictal_data = [x for x in list_files(database["windows"] + "/train", "*.csv")
+                  if patient not in x and "_ictal" in x and "batch" in x]
+    ictal_data = [(_, (0, 1)) for _ in ictal_data]
+    random.shuffle(ictal_data)
 
-    data_files = [x for x in list_files(database["windows"] + "/train", "*.csv")
-                  if patient not in x and "_ictal" not in x]
-    labels = [(1, 0) for _ in data_files]
-    for x, y in zip(labels, data_files):
-        for z in database["patients"]:
-            if z in y:
-                noictal_data[z].append((x, y))
-                break
+    noictal_data = [x for x in list_files(database["windows"] + "/train", "*.csv")
+                    if patient not in x and "_ictal" not in x and "batch" in x]
+    noictal_data = [(_, (1, 0)) for _ in noictal_data]
+    random.shuffle(noictal_data)
 
     data_files = [x for x in list_files(database["windows"] + "/test", "*.csv")
-                  if patient in x]
+                  if patient in x and "batch" in x]
     labels = [(0, 1) if "_ictal" in x else (1, 0) for x in data_files]
     testing_files = dict(zip(data_files, labels))
 
@@ -72,27 +63,27 @@ def main():
                     "val_acc": [],
                     "loss": [],
                     "val_loss": []}
-    for _ in range(settings["epochs"]):
-        labels, dataset = [], []
-        for x in database["patients"]:
-            if x == patient:
-                continue
-            y = random.choice(ictal_data[x])
-            labels.append(y[0])
-            dataset.append(y[1])
-            y = random.choice(noictal_data[x])
-            labels.append(y[0])
-            dataset.append(y[1])
-        training_files = dict(zip(dataset, labels))
+    max_files = settings["max_instances"]/database["minibatch"]
 
+    for _ in range(settings["epochs"]):
+        training_files = set()
+        while len(training_files)*2 < max_files:
+            training_files.add(random.choice(ictal_data))
+
+        while len(training_files) <= max_files:
+            training_files.add(random.choice(noictal_data))
+        training_files = tuple(training_files)
+
+        training_files = dict(zip(*tuple(zip(*tuple(training_files)))))
         x_train, y_train = prepare_dataset(training_files,
                                            database["num_channels"],
                                            shuffle=False)
 
-        history = model.fit(x_train, y_train, epochs=1, verbose=1,
-                            validation_split=0.2, batch_size=100,
+        history = model.fit(x_train, y_train,
+                            epochs=1, verbose=1,
+                            validation_split=0.2,
                             shuffle=True,
-                            callbacks=[early_stop_wang(database["patience"])])
+                            callbacks=[early_stop_wang(10)])
         history_data["acc"].extend(history.history["accuracy"])
         history_data["val_acc"].extend(history.history["val_accuracy"])
         history_data["loss"].extend(history.history["loss"])
