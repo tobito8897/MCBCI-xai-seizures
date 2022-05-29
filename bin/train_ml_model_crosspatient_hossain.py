@@ -82,12 +82,15 @@ def main():
         history = model.fit(x_train, y_train,
                             epochs=1, verbose=1,
                             validation_split=0.2,
-                            shuffle=True,
-                            callbacks=[early_stop_wang(10)])
+                            shuffle=True)
         history_data["acc"].extend(history.history["accuracy"])
         history_data["val_acc"].extend(history.history["val_accuracy"])
         history_data["loss"].extend(history.history["loss"])
         history_data["val_loss"].extend(history.history["val_loss"])
+        index_min = min(range(len(history_data["val_loss"])),
+                        key=history_data["val_loss"].__getitem__)
+        if index_min <= (len(history_data["val_loss"]) - 10):   #EARLY STOP (PATIENCE: 10)
+            break
     model.save(model_file)
 
     logging.info("Starting predictions")
