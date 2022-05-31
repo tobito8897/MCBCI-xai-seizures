@@ -89,7 +89,7 @@ def main():
         history_data["val_loss"].extend(history.history["val_loss"])
         index_min = min(range(len(history_data["val_loss"])),
                         key=history_data["val_loss"].__getitem__)
-        if index_min <= (len(history_data["val_loss"]) - 10):   #EARLY STOP (PATIENCE: 10)
+        if index_min <= (len(history_data["val_loss"]) - database["patience"]):   #EARLY STOP (PATIENCE: 10)
             break
     model.save(model_file)
 
