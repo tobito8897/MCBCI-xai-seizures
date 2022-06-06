@@ -77,6 +77,10 @@ def main():
             model = Net_Wang_2d((database["num_channels"],
                                  database["downsampled_length"], 1))
             x_train = x_train[..., np.newaxis]
+        elif OPTS["--model"] == "hossain":
+            model = Net_Hossain((database["num_channels"],
+                                database["downsampled_length"], 1),
+                                database["num_channels"])
 
         history = model.fit(x_train, y_train, epochs=settings["epochs"],
                             verbose=1, validation_split=0.2,
