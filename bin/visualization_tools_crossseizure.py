@@ -1,10 +1,12 @@
 #!/usr/bin/python3.7
 """
 Usage:
-    visualization_tools_hossain.py --patient=<p> --db=<d>
+    visualization_tools_wang.py --patient=<p>  --db=<d> --model=<m>
 
 Options:
     --patient=<p>     Patient used for evaluation
+    --db=<p>          Database to use for training
+    --model=<m>       Hossain, Wang 1d or Wang 2d
 """
 import sys
 import numpy as np
@@ -17,7 +19,7 @@ from utils.files import *
 
 OPTS = docopt(__doc__)
 PATIENT = OPTS["--patient"]
-settings = settings["hossain"]
+settings = settings[OPTS["--model"]]
 
 
 def main():
@@ -29,16 +31,16 @@ def main():
 
     for file in history_files:
         history = read_pickle(file)
+        name = "_".join(file.split(".")[4].split("_")[-2:])
         modifier = "_" if "full" not in file else "_full_"
         filename = "{}/accuracy_curve{}_{}{}".format(settings["images"],
                                                      OPTS['--db'],
-                                                     modifier, PATIENT)
+                                                     modifier, name)
         plot_validation_curve(history["acc"], history["val_acc"], filename,
                               "Accuracy")
 
-        filename = "{}/loss_curve{}_{}{}".format(settings["images"],
-                                                 OPTS['--db'],
-                                                 modifier, PATIENT)
+        filename = "{}/loss_curve{}{}".format(settings["images"],
+                                              modifier, name)
         plot_validation_curve(history["loss"], history["val_loss"], filename,
                               "Loss")
 

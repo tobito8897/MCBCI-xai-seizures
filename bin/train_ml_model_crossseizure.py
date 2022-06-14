@@ -6,7 +6,7 @@ Usage:
 Options:
     --patient=<p>     Patient used for evaluation
     --db=<p>          Database to use for training
-    --model=<m>       Wang 1d or 2d
+    --model=<m>       Hossain, Wang 1d or Wang 2d
 """
 import sys
 import logging

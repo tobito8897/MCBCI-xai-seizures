@@ -1,18 +1,18 @@
 #!/usr/bin/python3.7
 """
 Usage:
-    train_ml_model_crosspatient.py --patient=<p> --db=<d>
+    train_ml_model_crosspatient.py --patient=<p> --db=<d> --model=<m>
 
 Options:
     --patient=<p>     Patient used for evaluation
     --db=<p>          Database to use for training
+    --model=<m>       Hossain, Wang 1d or Wang 2d
 """
 import sys
 import random
 import logging
 import numpy as np
 import tensorflow as tf
-from collections import defaultdict
 from docopt import docopt
 sys.path.append("../")
 
@@ -27,7 +27,7 @@ tf.random.set_seed(1)
 OPTS = docopt(__doc__)
 database = settings[OPTS["--db"]]
 patient = OPTS["--patient"]
-settings = settings["hossain"]
+settings = settings[OPTS["--model"]]
 
 
 def main():
@@ -55,9 +55,16 @@ def main():
     model_file = "{}/model_patient_{}_{}.h5".format(settings["models"],
                                                     OPTS["--db"], patient)
 
-    model = Net_Hossain((database["num_channels"],
-                         database["downsampled_length"], 1),
-                        database["num_channels"])
+    if OPTS["--model"] == "wang_1d":
+        model = Net_Wang_1d((database["num_channels"],
+                            database["downsampled_length"]))
+    elif OPTS["--model"] == "wang_2d":
+        model = Net_Wang_2d((database["num_channels"],
+                            database["downsampled_length"], 1))
+    elif OPTS["--model"] == "hossain":
+        model = Net_Hossain((database["num_channels"],
+                            database["downsampled_length"], 1),
+                            database["num_channels"])
 
     history_data = {"acc": [],
                     "val_acc": [],
@@ -78,6 +85,8 @@ def main():
         x_train, y_train = prepare_dataset(training_files,
                                            database["num_channels"],
                                            shuffle=False)
+        if OPTS["--model"] == "wang_2d":
+            x_train = x_train[..., np.newaxis]
 
         history = model.fit(x_train, y_train,
                             epochs=1, verbose=1,
@@ -89,13 +98,15 @@ def main():
         history_data["val_loss"].extend(history.history["val_loss"])
         index_min = min(range(len(history_data["val_loss"])),
                         key=history_data["val_loss"].__getitem__)
-        if index_min <= (len(history_data["val_loss"]) - database["patience"]):   #EARLY STOP (PATIENCE: 10)
+        if index_min <= (len(history_data["val_loss"]) - 10):   #EARLY STOP (PATIENCE: 10)
             break
     model.save(model_file)
 
     logging.info("Starting predictions")
     x_test, y_test = prepare_dataset(testing_files,
                                      database["num_channels"], shuffle=False)
+    if OPTS["--model"] == "wang_2d":
+        x_test = x_test[..., np.newaxis]
     results = model.predict(x_test)
     y_real = y_test.argmax(axis=1).tolist()
     y_predicted = results.argmax(axis=1).tolist()

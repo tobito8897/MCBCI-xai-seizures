@@ -83,12 +83,14 @@ wang_1d:
   images: ../../images/wang_1d
   models: ../../models/wang_1d
   epochs: 100
+  max_instances: 8000
 
 wang_2d:
   stats: ../../mldata/wang_2d
   images: ../../images/wang_2d
   models: ../../models/wang_2d
   epochs: 100
+  max_instances: 8000
 
 classes:
   0: Normal
