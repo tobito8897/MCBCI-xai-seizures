@@ -13,6 +13,7 @@ import logging
 import numpy as np
 import tensorflow as tf
 from docopt import docopt
+from sklearn.metrics import f1_score
 sys.path.append("../")
 
 from utils import settings
@@ -31,10 +32,10 @@ settings = settings[OPTS["--model"]]
 def main():
     patient = OPTS["--patient"]
     logging.info("Patient selected for evaluation: %s", patient)
-    data_files = [x for x in list_files(database["windows"] + "/train", "*.csv")
-                  if patient in x]
+    data_files = sorted([x for x in list_files(database["windows"] + "/train", "*.csv")
+                        if patient in x])
 
-    sessions = {x.split("_")[2] for x in data_files}
+    sessions = [x.split("_")[2] for x in data_files]
     if len(sessions) < 2:
         logging.warning("Not enough sessions")
         return
@@ -101,14 +102,15 @@ def main():
                         "val_acc": history.history["val_accuracy"],
                         "loss": history.history["loss"],
                         "val_loss": history.history["val_loss"]}
-        write_pickle(history_file, history_data)
+        #write_pickle(history_file, history_data)
 
         tf.keras.backend.clear_session()
         del model
 
     stats_data = {"real": global_y_real,
                   "predicted": global_y_predicted}
-    write_pickle(stats_file, stats_data)
+    #write_pickle(stats_file, stats_data)
+    print(f1_score(global_y_real, global_y_predicted))
 
 
 if __name__ == "__main__":
