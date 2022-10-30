@@ -35,7 +35,7 @@ def main():
     data_files = sorted([x for x in list_files(database["windows"] + "/train", "*.csv")
                         if patient in x])
 
-    sessions = [x.split("_")[2] for x in data_files]
+    sessions = sorted(list({x.split("_")[2] for x in data_files}))
     if len(sessions) < 2:
         logging.warning("Not enough sessions")
         return
