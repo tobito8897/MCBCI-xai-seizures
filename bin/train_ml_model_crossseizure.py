@@ -102,14 +102,14 @@ def main():
                         "val_acc": history.history["val_accuracy"],
                         "loss": history.history["loss"],
                         "val_loss": history.history["val_loss"]}
-        #write_pickle(history_file, history_data)
+        write_pickle(history_file, history_data)
 
         tf.keras.backend.clear_session()
         del model
 
     stats_data = {"real": global_y_real,
                   "predicted": global_y_predicted}
-    #write_pickle(stats_file, stats_data)
+    write_pickle(stats_file, stats_data)
     print(f1_score(global_y_real, global_y_predicted))
 
 
