@@ -1,82 +1,120 @@
-chb-mit_wang:
-  database: ../../data/chbmit/
-  metadata: ../metadata/chb-mit
-  windows: ../../processeddata/wangdata_chb
-  channels: ../etc/channels_chb-mit.txt
-  seizure_records: ../etc/RECORDS-WITH-SEIZURES_chb-mit
-  fs: 256
-  num_channels: 21
-  length: 512
-  downsampled_length: 512
-  noictal_sample_step: 512
-  ictal_sample_step: 51       #Overlap 90% - 51, 80% - 102, 70% - 153, 98% - 10
+chb-mit:
+  root_dir: ../../data/chb-mit/
+  meta_dir: ../metadata/chb-mit/
+  windows_dir: ../../processeddata/chb/
+  models_dir: ../../models/chb-mit/
+  exp_dir: ../../explanations/chb-mit/
+  metrics_dir: ../../metrics/
+  epoch_size: 2           # 2 seconds  
+  f_samp: 256             # 256 Hz
   gain: 2.559375
-  units: 0.000001  # Microvots
-  patients:
-    - chb01
-    - chb02
-    - chb03
-    - chb04
-    - chb05
-    - chb06
-    - chb07
-    - chb08
-    - chb09
-    - chb10
-    - chb11
-    - chb12
-    - chb13
-    - chb14
-    - chb15
-    - chb16
-    - chb17
-    - chb18
-    - chb19
-    - chb20
-    - chb21
-    - chb22
-    - chb23
-    - chb24
+  units: 0.000001  # Microvolts
   patience: 15
-  minibatch: 100
 
-siena_wang:
-  database: ../../data/siena/
-  metadata: ../metadata/siena/
-  windows: ../../processeddata/wangdata_siena
-  channels: ../etc/channels_siena.txt
-  fs: 512
-  num_channels: 18
-  length: 1024
-  downsampled_length: 512
-  noictal_sample_step: 1024
-  ictal_sample_step: 102     #Overlap 90% - 102, 80% - 204, 70% - 306
+  seizure_type: null
+
+  bipolar_channels:
+    - [FP1, F7]
+    - [F7, T7]
+    - [T7, P7]
+    - [P7, O1]
+    - [FP1, F3]
+    - [F3, C3]
+    - [C3, P3]
+    - [P3, O1]
+    - [FP2, F4]
+    - [F4, C4]
+    - [C4, P4]
+    - [P4, O2]
+    - [FP2, F8]
+    - [F8, T8]
+    - [T8, P8]
+    - [P8, O2]
+    - [FZ, CZ]
+    - [CZ, PZ]
+    - [T7, FT9]
+    - [FT9, FT10]
+    - [FT10, T8]
+
+
+siena:
+  root_dir: ../../data/siena/
+  meta_dir: ../metadata/siena/
+  windows_dir: ../../processeddata/siena/
+  models_dir: ../../models/siena/
+  exp_dir: ../../explanations/siena/
+  metrics_dir: ../../metrics/
+  epoch_size: 2           # 2 seconds  
+  f_samp: 512
   gain: 1
-  units: 0.000001  # Microvots
-  patients:
-    - PN00
-    - PN01
-    - PN03
-    - PN05
-    - PN06
-    - PN07
-    - PN09
-    - PN10
-    - PN11
-    - PN12
-    - PN13
-    - PN14
-    - PN16
-    - PN17
-  patience: 10
-  minibatch: 100
+  units: 0.000001  # Microvolts  
+  patience: 15
 
-hossain:
-  stats: ../../mldata/hossain
-  images: ../../images/hossain
-  models: ../../models/hossain
-  epochs: 90
-  max_instances: 8000
+  seizure_type:
+    PN00: IAS-T
+    PN01: IAS-T
+    PN03: IAS-T
+    PN05: IAS-T
+    PN06: IAS-T
+    PN07: IAS-T
+    PN09: IAS-T
+    PN10: FBTC-F
+    PN11: IAS-T
+    PN12: IAS-T
+    PN13: IAS-T
+    PN14: WIAS-T
+    PN16: IAS-T
+    PN17: IAS-T
+
+  bipolar_channels:
+    - [Fp1, F7]
+    - [Fp2, F8]
+    - [F7, T3]
+    - [F8, T4]
+    - [T3, T5]
+    - [T4, T6]
+    - [T5, O1]
+    - [T6, O2]
+    - [Fp1, F3]
+    - [Fp2, F4]
+    - [F3, C3]
+    - [F4, C4]
+    - [C3, P3]
+    - [C4, P4]
+    - [P3, O1]
+    - [P4, O2]
+
+
+tusz:
+  root_dir: ../../../../Thesis/DataRaw/edf/
+  meta_dir: ../../../../Thesis/DataRaw/edf/
+  windows_dir: ../../processeddata/tusz/
+  models_dir: ../../models/tusz/
+  exp_dir: ../../explanations/tusz/
+  metrics_dir: ../../metrics/
+  epoch_size: 2           # 2 seconds  
+  f_samp: 512
+  gain: 1
+  units: 0.000001  # Microvolts  
+  patience: 10
+
+  bipolar_channels:
+    - [Fp1, F7]
+    - [Fp2, F8]
+    - [F7, T3]
+    - [F8, T4]
+    - [T3, T5]
+    - [T4, T6]
+    - [T5, O1]
+    - [T6, O2]
+    - [Fp1, F3]
+    - [Fp2, F4]
+    - [F3, C3]
+    - [F4, C4]
+    - [C3, P3]
+    - [C4, P4]
+    - [P3, O1]
+    - [P4, O2]
 
 wang_1d:
   stats: ../../mldata/wang_1d

@@ -1,73 +1,34 @@
-#!/bin/bash
-python3.7 generate_train_windows_chb.py --patient=chb01 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb02 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb03 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb04 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb05 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb06 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb07 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb08 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb09 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb10 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb11 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb12 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb13 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb14 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb15 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb16 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb17 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb18 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb19 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb20 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb21 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb22 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb23 --db=chb-mit_wang
-python3.7 generate_train_windows_chb.py --patient=chb24 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb01 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb02 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb03 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb04 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb05 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb06 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb07 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb08 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb09 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb10 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb11 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb12 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb13 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb14 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb15 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb16 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb17 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb18 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb19 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb20 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb21 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb22 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb23 --db=chb-mit_wang
-python3.7 generate_test_windows_chb.py --patient=chb24 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb01 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb02 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb03 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb04 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb05 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb06 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb07 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb08 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb09 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb10 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb11 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb12 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb13 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb14 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb15 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb16 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb17 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb18 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb19 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb20 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb21 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb22 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb23 --db=chb-mit_wang
-python3.7 train_ml_model_crosspatient_hossain.py --patient=chb24 --db=chb-mit_wang
+#python generate_windows_chb.py --class=train --overlap=0.5 --proportion=1
+#python generate_windows_chb.py --class=test --overlap=0 --proportion=1
+#python train_model_crossseizure.py --model=wang_1d --db=chb-mit --overlap=0.5
+#python generate_windows_chb.py --class=test --overlap=0.5 --proportion=1
+#python reevaluate_model_crossseizure.py --model=wang_1d --db=chb-mit --overlap=0.5
+
+#python generate_windows_siena.py --class=train --overlap=0.5 --proportion=1
+#python generate_windows_siena.py --class=test --overlap=0 --proportion=1
+#python train_model_crossseizure.py --model=wang_1d --db=siena --overlap=0.5
+#python generate_windows_siena.py --class=test --overlap=0.5 --proportion=1
+#python reevaluate_model_crossseizure.py --model=wang_1d --db=siena --overlap=0.5
+
+#python generate_windows_tusz.py --class=train --overlap=0.5 --proportion=1
+#python generate_windows_tusz.py --class=test --overlap=0 --proportion=1
+#python train_model_crossseizure.py --model=wang_1d --db=tusz --overlap=0.5
+#python generate_windows_tusz.py --class=test --overlap=0.5 --proportion=1
+#python reevaluate_model_crossseizure.py --model=wang_1d --db=tusz --overlap=0.5
+
+
+#python generate_windows_chb.py --class=test --overlap=0 --proportion=1
+#python generate_windows_siena.py --class=test --overlap=0 --proportion=1
+#python generate_windows_tusz.py --class=test --overlap=0 --proportion=1
+#python generate_windows_tusz.py --class=train --overlap=0.8 --proportion=1
+#python generate_windows_tusz.py --class=train --overlap=0.8 --proportion=1
+#python generate_windows_tusz.py --class=train --overlap=0.8 --proportion=1
+
+#python generate_explanations_lime.py --db=chb-mit --model=wang_1d --overlap=0.8
+#python generate_explanations_shap.py --db=chb-mit --model=wang_1d --overlap=0.8
+
+#python generate_explanations_lime.py --db=siena --model=wang_1d --overlap=0.8
+#python generate_explanations_shap.py --db=siena --model=wang_1d --overlap=0.8
+
+#python generate_explanations_lime.py --db=tusz --model=wang_1d --overlap=0.8
+#python generate_explanations_shap.py --db=tusz --model=wang_1d --overlap=0.8
