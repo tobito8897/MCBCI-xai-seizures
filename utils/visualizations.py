@@ -39,7 +39,7 @@ def plot_database_comparison(dataframe: pd.DataFrame,
                              y_column: str,
                              hue_column: str, save: str):
     grid_specs = GridSpec(2, 1, wspace=0.08, hspace=0.15)
-    fig = plt.figure(figsize=(4.1, 6))
+    fig = plt.figure(figsize=(5.5, 4))
 
     #########################################################
     ax = fig.add_subplot(grid_specs[0, 0])
@@ -64,7 +64,7 @@ def plot_seizure_comparison(dataframe_1: pd.DataFrame,
                             y_column: str,
                             save: str):
     grid_specs = GridSpec(1, 2, wspace=0.08, hspace=0.15)
-    fig = plt.figure(figsize=(5.1, 3.5))
+    fig = plt.figure(figsize=(5.5, 4))
 
     #########################################################
     ax = fig.add_subplot(grid_specs[0, 0])
@@ -76,7 +76,7 @@ def plot_seizure_comparison(dataframe_1: pd.DataFrame,
     ax.yaxis.set_tick_params(labelsize=8)
     ax.set_ylim([0, 1])
     ax.legend([], [], frameon=False)
-    ax.text(1.0, -0.3, "(a)", fontsize=7)
+    ax.text(1.0, -0.25, "(a)", fontsize=8)
 
     #########################################################
     ax = fig.add_subplot(grid_specs[0, 1])
@@ -88,9 +88,9 @@ def plot_seizure_comparison(dataframe_1: pd.DataFrame,
     ax.yaxis.set_tick_params(labelsize=8)
     ax.set_ylim([0, 1])
     ax.set_yticks([])
-    ax.set_ylabel("", fontsize=7)
+    ax.set_ylabel("", fontsize=8)
     ax.legend([], [], frameon=False)
-    ax.text(2.0, -0.3, "(b)", fontsize=7)
+    ax.text(2.0, -0.25, "(b)", fontsize=8)
 
     if save:
         plt.savefig(save, dpi=400, bbox_inches="tight", pad_inches=0.1,
@@ -163,16 +163,16 @@ def plot_distribution_cofficients(dataframe_shap: pd.DataFrame,
     ax.plot([0.3]*201, list(range(-1, 200)), color='b', linestyle="--")
     ax.plot([-0.5]*201, list(range(-1, 200)), color='r', linestyle="--")
     ax.plot([0.5]*201, list(range(-1, 200)), color='r', linestyle="--")
-    ax.yaxis.label.set_size(7)
-    ax.xaxis.label.set_size(7)
-    ax.xaxis.set_tick_params(labelsize=7, rotation=90)
-    ax.yaxis.set_tick_params(labelsize=7)
+    ax.yaxis.label.set_size(8)
+    ax.xaxis.label.set_size(8)
+    ax.xaxis.set_tick_params(labelsize=8, rotation=90)
+    ax.yaxis.set_tick_params(labelsize=8)
     ax.set_xlim([-0.75, 0.75])
     ax.set_ylim([0, 200])
     ax.legend(loc="upper right", frameon=False)
-    ax.set_ylabel("Count", fontsize=7)
-    ax.set_xlabel("Spearman's correlation", fontsize=7)
-    ax.text(0, -40, "(a)", fontsize=7)
+    ax.set_ylabel("Count", fontsize=8)
+    ax.set_xlabel("Spearman's correlation", fontsize=8)
+    ax.text(0, -50, "(a)", fontsize=8)
 
     #########################################################
     ax = fig.add_subplot(grid_specs[0, 1])
@@ -181,17 +181,17 @@ def plot_distribution_cofficients(dataframe_shap: pd.DataFrame,
     ax.plot([0.3]*201, list(range(-1, 200)), color='b', linestyle="--")
     ax.plot([-0.5]*201, list(range(-1, 200)), color='r', linestyle="--")
     ax.plot([0.5]*201, list(range(-1, 200)), color='r', linestyle="--")
-    ax.yaxis.label.set_size(7)
-    ax.xaxis.label.set_size(7)
-    ax.xaxis.set_tick_params(labelsize=7, rotation=90)
-    ax.yaxis.set_tick_params(labelsize=7)
+    ax.yaxis.label.set_size(8)
+    ax.xaxis.label.set_size(8)
+    ax.xaxis.set_tick_params(labelsize=8, rotation=90)
+    ax.yaxis.set_tick_params(labelsize=8)
     ax.set_xlim([-0.75, 0.75])
     ax.set_ylim([0, 200])
     ax.set_yticks([])
     ax.legend(loc="upper right", frameon=False)
-    ax.set_ylabel("", fontsize=7)
-    ax.set_xlabel("Spearman's correlation", fontsize=7)
-    ax.text(0, -40, "(b)", fontsize=7)
+    ax.set_ylabel("", fontsize=8)
+    ax.set_xlabel("Spearman's correlation", fontsize=8)
+    ax.text(0, -50, "(b)", fontsize=8)
 
     if save:
         plt.savefig(save, dpi=400, bbox_inches="tight", pad_inches=0.2,
