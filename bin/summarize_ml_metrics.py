@@ -4,7 +4,7 @@ Usage:
     summarize_ml_metrics.py --file=<f>
 
 Options:
-    --model=<p>       Full file name
+    --file=<p>       Full file name
 """
 import sys
 import logging
@@ -24,7 +24,7 @@ def main():
     metrics_file = f"{metrics_dir}{OPTS['--file']}"
     performances = pd.read_csv(metrics_file)
     grouped_perfs = performances.groupby(["patient"])
-    mean_perfs = grouped_perfs[["f1_score", "sensitivity", "specificity", "accuracy"]].mean()
+    mean_perfs = grouped_perfs[["f1_score", "sensitivity", "specificity", "accuracy", "auc_roc"]].mean()
 
     output_file = metrics_file.replace(".csv", "_summary.csv")
     print(mean_perfs)

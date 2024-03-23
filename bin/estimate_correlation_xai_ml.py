@@ -40,6 +40,8 @@ def main():
     patients = Patients(DBCONF["windows_dir"])
     for patient in patients:
         logging.info("Selected patient: %s", patient.patient_name)
+        if patient.patient_name not in ["6904", "6563"]: # ----------- 
+            continue
 
         root_dir = f"{DBCONF['exp_dir']}{OPTS['--xai']}"
         name_pattern = f"*{patient.patient_name}*eeg*"
@@ -76,7 +78,7 @@ def main():
 
         try:
             metrics = pd.read_csv(f"{DBCONF['metrics_dir']}corr_" \
-                                  f"{OPTS['--model']}_{OPTS['--xai']}.csv")
+                                  f"{OPTS['--db']}_{OPTS['--model']}_{OPTS['--xai']}_second_round.csv")
             metrics = metrics.to_dict(orient="records")
         except:
             metrics = []
@@ -111,11 +113,12 @@ def main():
                                 "class": "ictal",
                                 "band": band,
                                 "feature": feature,
-                                "coefficient": spearman_result[0]})
-
+                                "coefficient": spearman_result[0],
+                                "pvalue": str(spearman_result[1])})
         metrics = pd.DataFrame(metrics)
+        print(metrics)
         metrics.to_csv(f"{DBCONF['metrics_dir']}corr_" \
-                       f"{OPTS['--model']}_{OPTS['--xai']}.csv",
+                       f"{OPTS['--db']}_{OPTS['--model']}_{OPTS['--xai']}_second_round.csv",
                        index=False)
 
 

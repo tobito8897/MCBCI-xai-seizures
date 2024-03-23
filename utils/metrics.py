@@ -1,5 +1,5 @@
 import numpy as np
-from sklearn.metrics import confusion_matrix, f1_score, accuracy_score
+from sklearn.metrics import confusion_matrix, f1_score, accuracy_score, roc_auc_score
 
 
 def performance_metrics(true_label: list, predicted_label: list):
@@ -13,3 +13,7 @@ def performance_metrics(true_label: list, predicted_label: list):
     spec = float(cmatrix[0][0]/np.sum(cmatrix[0]))
     acc = accuracy_score(true_label, predicted_label)
     return f1s, sen, spec, acc
+
+def roc_score(true_label: list, predicted_label: list):
+    return roc_auc_score(true_label, predicted_label)
+    

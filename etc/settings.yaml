@@ -1,4 +1,5 @@
 chb-mit:
+  seizure_records: ../etc/RECORDS-WITH-SEIZURES_chb-mit
   root_dir: ../../data/chb-mit/
   meta_dir: ../metadata/chb-mit/
   windows_dir: ../../processeddata/chb/
@@ -8,7 +9,7 @@ chb-mit:
   epoch_size: 2           # 2 seconds  
   f_samp: 256             # 256 Hz
   gain: 2.559375
-  units: 0.000001  # Microvolts
+  units: 0.000001         # Microvolts
   patience: 15
 
   seizure_type: null

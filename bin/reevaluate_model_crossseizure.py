@@ -6,7 +6,7 @@ Usage:
 Options:
     --model=<p>       Model to be used: wang_1d, wang_2d
     --db=<d>          Database to use for training
-    --overlap=<m>     Overlap applied to the training dataset, 0.7, 0.8, 0.9
+    --overlap=<m>     Overlap applied to the training dataset, 0.5, 0.7, 0.8
 """
 import sys
 import logging
@@ -18,7 +18,7 @@ from docopt import docopt
 sys.path.append("../")
 
 from utils import settings
-from utils.metrics import performance_metrics
+from utils.metrics import performance_metrics, roc_score
 from utils.mlfiles import StandardScaler, Patients, prepare_dataset
 
 np.random.seed(1)
@@ -31,7 +31,7 @@ MLCONF = settings[OPTS["--model"]]
 
 def main():
     metrics_file = f'{DBCONF["metrics_dir"]}perf_{OPTS["--db"]}_' \
-                   f'{OPTS["--model"]}_{OPTS["--overlap"]}_reevaluated.csv'
+                   f'{OPTS["--model"]}_{OPTS["--overlap"]}.csv'
     metrics = []
 
     patients = Patients(DBCONF["windows_dir"])
@@ -53,9 +53,6 @@ def main():
         for (training_files, testing_files) in iter(patient):
             file_list = list(testing_files.keys())
             seizure_type = file_list[0].split("_")[-2]
-            model_name = "_".join(file_list[0].split("/")[-1].split("_")[:-1])
-            model_file = f'{DBCONF["models_dir"]}{OPTS["--model"]}/{model_name}_' \
-                         f'{OPTS["--overlap"]}.h5'
 
             x_train, y_train = prepare_dataset(training_files,
                                              num_channels)
@@ -68,20 +65,23 @@ def main():
             logging.info("Number of instances for testing: %s", x_test.shape[0])
 
             file_list = list(testing_files.keys())
+            _overlap = OPTS["--overlap"].replace(".", "_")
             model_name = "_".join(file_list[0].split("/")[-1].split("_")[:-1])
-            model_file = f'{DBCONF["models_dir"]}{OPTS["--model"]}/{model_name}_' \
-                         f'{OPTS["--overlap"]}.h5'
+            model_file = f'{DBCONF["models_dir"]}{OPTS["--model"]}_{_overlap}/' \
+                         f'{model_name}_{OPTS["--overlap"]}.h5'
             model = keras.models.load_model(model_file)
 
             y_predicted = model.predict(x_test)
             f1_score, sen, spec, acc = performance_metrics(y_test, y_predicted)
-            logging.info("Metrics, f1=%s, sen=%s, spec=%s", f1_score, sen, spec)
+            auc_score = roc_score(y_test, y_predicted)
+            logging.info("Metrics, f1=%s, sen=%s, spec=%s, auc=%s", f1_score, sen, spec, auc_score)
             metrics.append({"patient": patient.patient_name,
                             "seizure_type": seizure_type,
                             "f1_score": f1_score,
                             "sensitivity": sen,
                             "specificity": spec,
-                            "accuracy": acc})
+                            "accuracy": acc,
+                            "auc_roc": auc_score})
 
         dataframe = pd.DataFrame.from_dict(metrics)
         dataframe.to_csv(metrics_file, index=False)
