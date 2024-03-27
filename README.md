@@ -14,8 +14,8 @@
 
 ### Citing
 
-Evaluation of the Relation between Ictal EEG Features and XAI Explanations
-
+If you find this repository useful, please consider citing our work.
+```
 @article{brainsci14040306,
          title={Evaluation of the Relation between Ictal EEG Features and XAI Explanations},
          author={Sánchez-Hernández, Sergio E. and Torres-Ramos, Sulema and Román-Godínez, Israel and Salido-Ruiz, Ricardo A.},
@@ -27,3 +27,4 @@ Evaluation of the Relation between Ictal EEG Features and XAI Explanations
          article-number={306},
          doi={10.3390/brainsci14040306}
 }
+```
