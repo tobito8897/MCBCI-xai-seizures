@@ -2,7 +2,7 @@
 
 ### Overview
 
-* This repository contains code used for the research hhttps://doi.org/10.3390/s22083066.
+* This repository contains code used for the research https://doi.org/10.3390/brainsci14040306.
 * The configuration and metadata files are included too.
 * Datasets are not included.
 
@@ -14,4 +14,16 @@
 
 ### Citing
 
-Coming soon!
+Evaluation of the Relation between Ictal EEG Features and XAI Explanations
+
+@article{brainsci14040306,
+         title={Evaluation of the Relation between Ictal EEG Features and XAI Explanations},
+         author={Sánchez-Hernández, Sergio E. and Torres-Ramos, Sulema and Román-Godínez, Israel and Salido-Ruiz, Ricardo A.},
+         journal={Brain Sciences},
+         volume={14},
+         number={4},
+         year={2024},
+         publisher={MDPI},
+         article-number={306},
+         doi={10.3390/brainsci14040306}
+}
